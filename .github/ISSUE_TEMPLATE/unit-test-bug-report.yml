@@ -1,0 +1,56 @@
+name: Bug Report
+description: File a bug report found during unit testing
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "This form is meant for reporting defects found during unit testing the e-commerce store utility library."
+  - type: input
+    id: affected-function
+    attributes:
+      label: Affected function / file
+      description: During the testing of which function was the bug found?
+      placeholder: func.js
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Please also describe what you expected to happen.
+      placeholder: A bug happened! It should not!
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Provide the steps to reproduce the behavior.
+      placeholder: |
+        1. Call '...' function with '...' parameters 
+        2. See error message
+    validations:
+      required: true
+  - type: dropdown
+    id: prevalence
+    attributes:
+      label: Does the bug occur every time?
+      description: When following the reproduction steps multiple times, does the behavior happen consistently?
+      options:
+        - "Yes, every time"
+        - "Happens sometimes"
+        - "No, only happened once"
+    validations:
+      required: false
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this bug?
+      options:
+        - "Low"
+        - "Medium"
+        - "High"
+    validations:
+      required: false

@@ -20,7 +20,7 @@ describe('Phase1 planned test - every()', () => {
             expect(every([], x => x === true ))
             .toBe(true)
         });
-      
+        // ### Tämä ymmärretty väärin test plania tehdessä, huomioi rapsassa ja poista sitten.
         test('returns false when input is null', () => {
             expect(every(null, x => x === true ))
             .toBe(false)
@@ -28,12 +28,12 @@ describe('Phase1 planned test - every()', () => {
     })
 
     describe('edge cases', () => {
-          // Tämä ymmärretty väärin test plania tehdessä
+        // ### Tässä korjattu versio  
         test('returns true when input is null', () => {
             expect(every(null, () => false))
             .toBe(true)
         });
- // seuraavat ei löydy test planista:
+        // seuraavat ei löydy test planista:
         test('returns true when input is undefined', () => {
             expect(every(undefined, () => false))
             .toBe(true)

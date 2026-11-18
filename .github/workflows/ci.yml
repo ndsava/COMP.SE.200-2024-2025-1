@@ -22,6 +22,7 @@ jobs:
         run: npm run coverage
 
       - name: Upload coverage reports to Coveralls
+        if: always()   # Upload test reports to Coveralls even if some tests fail
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

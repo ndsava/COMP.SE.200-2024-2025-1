@@ -1,0 +1,28 @@
+name: CI Pipeline
+on:
+  [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci   # ci = clean install
+
+      - name: Run Vitest tests and generate coverage/lcov.info
+        run: npm run coverage
+
+      - name: Upload coverage reports to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          files: coverage/lcov.info

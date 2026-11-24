@@ -5,7 +5,9 @@ export default defineConfig({
         coverage: {
             provider: 'v8',
             reporter: ['text', 'lcov'],
-            reportOnFailure: true
+            reportOnFailure: true,
+            include: ['src'],
+            exclude: ['src/.internal']
         },
         passWithNoTests: true  // Prevents CI pipeline from failing before tests are implemented
     }

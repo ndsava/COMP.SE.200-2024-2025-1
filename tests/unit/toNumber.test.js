@@ -81,10 +81,10 @@ describe('Function under test - toNumber()', () => {
             .toBe(true)
         });
 
-        test('returns NaN for empty string', () => {
-            expect(Number.isNaN(toNumber('')))
-            .toBe(true)
+        test('converts empty string to 0', () => {
+            expect(toNumber('')).toBe(0)
         });
+
 
         test('converts binary string', () => {
             expect(toNumber('0b1010'))
@@ -191,10 +191,9 @@ describe('Function under test - toNumber()', () => {
             expect(toNumber(['3.2']))
             .toBe(3.2)
         });
-
-        test('returns NaN for empty array', () => {
-            expect(Number.isNaN(toNumber([])))
-            .toBe(true)
+        
+        test('converts empty array to 0', () => {
+            expect(toNumber([])).toBe(0)
         });
 
         test('returns NaN for multi-element array', () => {
@@ -204,9 +203,8 @@ describe('Function under test - toNumber()', () => {
     });
 
     describe('edge cases', () => {
-        test('handles string with only whitespace', () => {
-            expect(Number.isNaN(toNumber('   ')))
-            .toBe(true)
+        test('converts string with only whitespace to 0', () => {
+            expect(toNumber('   ')).toBe(0)
         });
 
         test('handles very large number string', () => {

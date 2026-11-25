@@ -1,5 +1,5 @@
 import { describe, test, expect, vi } from 'vitest'
-import every from "../../src/every.js";
+import every from "../../src/every.js"
 
 describe('every', () => {
   test('returns true when all elements satisfy the predicate', () => {
@@ -69,5 +69,41 @@ describe('every', () => {
     const result = every([1, 2, 3], () => true)
 
     expect(result).toBe(true)
+  })
+
+  test('passes all arguments correctly for every element', () => {
+    const array = ['first', 'second', 'third']
+    const mockPredicate = vi.fn(() => true)
+
+    every(array, mockPredicate)
+
+    expect(mockPredicate).toHaveBeenNthCalledWith(1, 'first', 0, array)
+    expect(mockPredicate).toHaveBeenNthCalledWith(2, 'second', 1, array)
+    expect(mockPredicate).toHaveBeenNthCalledWith(3, 'third', 2, array)
+  })
+
+  test('treats truthy and falsey predicate results correctly', () => {
+    expect(every([1, 'value', true], value => value)).toBe(true)
+    expect(every([1, '', true], value => value)).toBe(false)
+  })
+
+  test.each([[], null, undefined])(
+    'does not call the predicate for an empty or missing array',
+    array => {
+      const mockPredicate = vi.fn(() => false)
+
+      expect(every(array, mockPredicate)).toBe(true)
+      expect(mockPredicate).not.toHaveBeenCalled()
+    }
+  )
+
+  test('propagates errors thrown by the predicate', () => {
+    const error = new Error('predicate failed')
+    const mockPredicate = vi.fn(() => {
+      throw error
+    })
+
+    expect(() => every([1], mockPredicate)).toThrow(error)
+    expect(mockPredicate).toHaveBeenCalledTimes(1)
   })
 })

@@ -1,4 +1,4 @@
-import { describe, test, expect } from "vitest";
+import { describe, test, expect, vi } from "vitest";
 import reduce from "../../src/reduce.js";
 
 describe('Function under test - reduce()', () => {

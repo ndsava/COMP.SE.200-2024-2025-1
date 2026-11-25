@@ -1,7 +1,6 @@
 import { describe, test, expect } from "vitest";
 import filter from '../../src/filter.js';
 
-const testArray = [1,2,3,4]
 
 describe ('Phase1 planned tests - filter()', () => {
     describe('basic functionality', () => {
@@ -22,7 +21,6 @@ describe ('Phase1 planned tests - filter()', () => {
             .toEqual([])
         });        
     })
-    // seuraavat ei test planissa
     describe('edge cases', () => {
         test('handles null array', () => {
             expect(filter(null, () => true))

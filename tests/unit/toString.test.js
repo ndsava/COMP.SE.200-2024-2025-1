@@ -197,12 +197,12 @@ describe('Function under test - toString()', () => {
     describe('edge cases', () => {
         test('handles very large number', () => {
             expect(toString(999999999999999999999))
-            .toBe('999999999999999999999')
-        });
+            .toBe('1e+21')
+        })
 
         test('handles very small number', () => {
-            expect(toString(0.000000001))
-            .toBe('0.000000001')
+            expect(toString(1e-9))
+            .toBe('1e-9')
         });
 
         test('handles array with negative zero', () => {

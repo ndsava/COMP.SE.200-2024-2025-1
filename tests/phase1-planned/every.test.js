@@ -19,7 +19,6 @@ describe('Phase1 planned test - every()', () => {
             expect(every([], x => x === true ))
             .toBe(true)
         });
-
     })
 
     describe('edge cases', () => {
@@ -27,17 +26,14 @@ describe('Phase1 planned test - every()', () => {
             expect(every(null, () => false))
             .toBe(true)
         });
-        // seuraavat ei löydy test planista:
         test('returns true when input is undefined', () => {
             expect(every(undefined, () => false))
             .toBe(true)
         });
-
         test('returns true with single element that passes', () => {
             expect(every([5], (num) => num > 0))
             .toBe(true)
         });
-
         test('returns false with single element that fails', () => {
             expect(every([5], (num) => num < 0))
             .toBe(false)

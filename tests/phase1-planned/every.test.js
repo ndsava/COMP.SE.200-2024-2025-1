@@ -15,20 +15,14 @@ describe('Phase1 planned test - every()', () => {
             expect(every([1,4,6], x => x % 2 === 0 ))
             .toBe(false)
         });
-        // VIRHE test planissa, tämän tulee palauttaa true kun tyhjä array inputtina, lukee funkun kuvauksessa
         test('returns true when empty array given as input', () => {
             expect(every([], x => x === true ))
             .toBe(true)
         });
-        // ### Tämä ymmärretty väärin test plania tehdessä, huomioi rapsassa ja poista sitten.
-        test('returns false when input is null', () => {
-            expect(every(null, x => x === true ))
-            .toBe(false)
-        });
+
     })
 
     describe('edge cases', () => {
-        // ### Tässä korjattu versio  
         test('returns true when input is null', () => {
             expect(every(null, () => false))
             .toBe(true)

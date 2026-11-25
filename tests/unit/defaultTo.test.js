@@ -88,10 +88,11 @@ describe('Function under test - defaultTo()', () => {
         });
     });
 
+
     describe('edge cases', () => {
-        test('returns NaN value as is', () => {
+        test('returns defaultValue when value is NaN', () => {
             expect(defaultTo(NaN, 10))
-            .toBe(NaN)
+            .toBe(10)
         });
 
         test('returns value when defaultValue is null', () => {
